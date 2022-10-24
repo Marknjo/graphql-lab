@@ -11,3 +11,7 @@ const resolvers = {
     greeting: () => "Hello world!",
   },
 };
+
+const server = new ApolloServer({ typeDefs, resolvers });
+const { url } = await server.listen({ port: 9000 });
+console.log(`GraphQl server running a ${url}`);
