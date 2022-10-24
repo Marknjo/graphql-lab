@@ -2,11 +2,11 @@
   "name": "graphql-basics",
   "version": "1.0.0",
   "description": "A hello world representation of graphql basics",
-  "main": "index.js",
+  "main": "server.js",
   "type": "module",
   "private": true,
   "scripts": {
-    "dev": ""
+    "dev": "node server"
   },
   "keywords": [],
   "author": "",
