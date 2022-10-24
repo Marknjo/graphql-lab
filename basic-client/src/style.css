@@ -67,7 +67,15 @@ h1::after {
   text-transform: uppercase;
   letter-spacing: 2px;
   color: burlywood;
-  margin-bottom: 1rem;
+  margin-bottom: 1.6rem;
+}
+
+.btn-fetch {
+  align-self: center;
+  background-color: burlywood;
+  color: #f9f9f9;
+  margin-bottom: 1.2rem;
+  cursor: pointer;
 }
 
 

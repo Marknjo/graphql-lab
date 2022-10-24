@@ -2,6 +2,9 @@ import "./style.css";
 
 // const rootEl = document.getElementById("app");
 const displayEl = document.querySelector(".greeting") as HTMLElement;
+const greetingsBtnEl = document.querySelector(
+  ".btn-fetch"
+) as HTMLButtonElement;
 
 if (displayEl) {
   displayEl.textContent = "Loading...";
