@@ -6,10 +6,6 @@ const greetingsBtnEl = document.querySelector(
   ".btn-fetch"
 ) as HTMLButtonElement;
 
-if (displayEl) {
-  displayEl.textContent = "Loading...";
-}
-
 async function fetchGreetings() {
   try {
     const response = await fetch("http://localhost:9000", {
@@ -41,4 +37,10 @@ async function fetchGreetings() {
   }
 }
 
-fetchGreetings();
+greetingsBtnEl.addEventListener("click", () => {
+  if (displayEl) {
+    displayEl.textContent = "Loading...";
+  }
+
+  fetchGreetings();
+});
