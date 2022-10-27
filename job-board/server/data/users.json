@@ -2,13 +2,13 @@
   {
     "id": "uogQAZnLcAlT6lMuNbpQg",
     "email": "alice@facegle.io",
-    "password": "alice123",
+    "password": "alice@_*123#",
     "companyId": "pVbRRBQtMVw6lUAkj1k43"
   },
   {
     "id": "i0Nn6qvicHP5DTuKTyaq0",
     "email": "bob@goobook.co",
-    "password": "bob123",
+    "password": "bob@_*123#",
     "companyId": "wvdB54Gqbdp_NZTXK9Tue"
   }
 ]
