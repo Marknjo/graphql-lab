@@ -4,7 +4,7 @@
   "license": "MIT",
   "type": "module",
   "scripts": {
-    "dev": "nodemon server.js --ext js,graphql --ignore data/ "
+    "dev": "nodemon server.js -e js,graphql --ignore data/ "
   },
   "dependencies": {
     "@apollo/server": "^4.0.4",
