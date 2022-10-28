@@ -1,7 +1,9 @@
+import { Job } from "../db.js";
+
 const resolvers = {
   Query: {
-    greetings() {
-      return "Hello world";
+    jobs: async () => {
+      return Job.findAll();
     },
   },
 };

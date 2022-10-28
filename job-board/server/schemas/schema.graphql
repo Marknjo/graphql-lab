@@ -3,5 +3,11 @@ type Schema {
 }
 
 type Query {
-  greetings: String
+  jobs: [Job!]
+}
+
+type Job {
+  id: ID!
+  title: String!
+  description: String
 }
