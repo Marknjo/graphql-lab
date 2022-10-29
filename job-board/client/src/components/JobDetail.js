@@ -15,7 +15,7 @@ function JobDetail() {
     }
 
     fetchJob();
-  }, []);
+  }, [jobId]);
 
   if (!job) {
     return <p>Loading...</p>;
