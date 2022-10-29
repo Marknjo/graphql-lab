@@ -7,6 +7,10 @@ const resolvers = {
     company: (_root, { id }) => Company.findById(id),
   },
 
+  Company: {
+    jobs: ({ id }) => Job.findAll((job) => job.companyId === id),
+  },
+
   Job: {
     company: async (job) => {
       return Company.findById(job.companyId);
