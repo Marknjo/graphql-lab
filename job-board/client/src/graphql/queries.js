@@ -39,3 +39,20 @@ export async function getJobs() {
   const { jobs } = await request(GRAPHQL_URL, query);
   return jobs;
 }
+
+export async function getCompany(id) {
+  const query = gql`
+    query CompanyQuery($id: ID) {
+      company(id: $id) {
+        id
+        name
+        description
+      }
+    }
+  `;
+  const variables = { id };
+
+  const { company } = await request(GRAPHQL_URL, query, variables);
+
+  return company;
+}
