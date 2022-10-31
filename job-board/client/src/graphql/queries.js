@@ -60,3 +60,26 @@ export async function getCompany(id) {
 
   return company;
 }
+
+/// Mutations
+export async function createJob(input) {
+  const query = gql`
+    mutation createJobMutation($input: CreateJobInput) {
+      job: createJob(input: $input) {
+        id
+        title
+        description
+        company {
+          id
+          name
+        }
+      }
+    }
+  `;
+
+  const variables = { input };
+
+  const { job } = await request(GRAPHQL_URL, query, variables);
+
+  return job;
+}
