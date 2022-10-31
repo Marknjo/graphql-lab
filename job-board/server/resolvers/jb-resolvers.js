@@ -8,8 +8,8 @@ const resolvers = {
   },
 
   Mutation: {
-    createJob(_root, { title, companyId, description }) {
-      return Job.create({ title, companyId, description });
+    createJob(_root, { input }) {
+      return Job.create(input);
     },
   },
 
