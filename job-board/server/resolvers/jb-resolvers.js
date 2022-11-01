@@ -1,10 +1,13 @@
-import { Job, Company } from "../db.js";
+import { Job, Company, User } from "../db.js";
 
 const isLoggedIn = (userId) => {
   if (!userId) {
     throw new Error("Unauthorized to access");
   }
 };
+
+const getUserCompanyId = async (userId) =>
+  (await User.findById(userId)).companyId;
 
 const resolvers = {
   Query: {
@@ -14,12 +17,15 @@ const resolvers = {
   },
 
   Mutation: {
-    createJob(_root, { input }, { id: userId }) {
+    async createJob(_root, { input }, { id: userId }) {
+      /// find user company id
+      const companyId = await getUserCompanyId(userId);
+
       // Check logging
       isLoggedIn(userId);
 
       // Action if logged in
-      return Job.create(input);
+      return Job.create({ ...input, companyId });
     },
     deleteJob(_root, { id }, { id: userId }) {
       // Check logging

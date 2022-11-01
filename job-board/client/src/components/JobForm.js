@@ -10,9 +10,7 @@ function JobForm() {
   const handleSubmit = async (event) => {
     event.preventDefault();
 
-    const companyId = "pVbRRBQtMVw6lUAkj1k43"; // TODO: remove later
-
-    const job = await createJob({ title, description, companyId });
+    const job = await createJob({ title, description });
 
     navigate(`/jobs/${job.id}`);
   };
