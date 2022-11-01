@@ -14,6 +14,18 @@ const resolvers = {
     deleteJob(_root, { id }) {
       return Job.delete(id);
     },
+    async updateJob(_root, { input }) {
+      const oldData = await Job.findById(input.id);
+
+      if (!oldData) {
+        throw new Error(`Invalid Job Id: ${input.id}`);
+      }
+
+      return Job.update({
+        ...oldData,
+        ...input,
+      });
+    },
   },
 
   Company: {
