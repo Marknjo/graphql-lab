@@ -11,6 +11,9 @@ const resolvers = {
     createJob(_root, { input }) {
       return Job.create(input);
     },
+    deleteJob(_root, { id }) {
+      return Job.delete(id);
+    },
   },
 
   Company: {
