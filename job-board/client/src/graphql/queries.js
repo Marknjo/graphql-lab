@@ -80,7 +80,5 @@ export async function createJob(input) {
 
   const { job } = await request(GRAPHQL_URL, query, variables);
 
-  console.log({ job });
-
   return job;
 }

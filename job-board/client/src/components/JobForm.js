@@ -14,8 +14,6 @@ function JobForm() {
 
     const job = await createJob({ title, description, companyId });
 
-    console.log(`Job Created: ${job}`);
-
     navigate(`/jobs/${job.id}`);
   };
 
