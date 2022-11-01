@@ -76,7 +76,11 @@ async function startApolloServer() {
     cors(),
     json(),
     expressMiddleware(server, {
-      context: async ({ req }) => ({ token: req.headers.token }),
+      context: async ({ req }) => {
+        if (!req.auth) return { id: null };
+
+        return { id: req.auth.sub };
+      },
     })
   );
 

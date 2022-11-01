@@ -1,5 +1,11 @@
 import { Job, Company } from "../db.js";
 
+const isLoggedIn = (userId) => {
+  if (!userId) {
+    throw new Error("Unauthorized to access");
+  }
+};
+
 const resolvers = {
   Query: {
     job: (_root, { id }) => Job.findById(id),
@@ -8,19 +14,33 @@ const resolvers = {
   },
 
   Mutation: {
-    createJob(_root, { input }) {
+    createJob(_root, { input }, { id: userId }) {
+      // Check logging
+      isLoggedIn(userId);
+
+      // Action if logged in
       return Job.create(input);
     },
-    deleteJob(_root, { id }) {
+    deleteJob(_root, { id }, { id: userId }) {
+      // Check logging
+      isLoggedIn(userId);
+
+      // Action if logged in
       return Job.delete(id);
     },
-    async updateJob(_root, { input }) {
+    async updateJob(_root, { input }, { id: userId }) {
+      // Check logging
+      isLoggedIn(userId);
+
+      // Action if logged in
+      /// Get old data
       const oldData = await Job.findById(input.id);
 
       if (!oldData) {
         throw new Error(`Invalid Job Id: ${input.id}`);
       }
 
+      /// Override and update
       return Job.update({
         ...oldData,
         ...input,
