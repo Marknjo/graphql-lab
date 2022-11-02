@@ -1,4 +1,5 @@
-import { request, gql } from "graphql-request";
+import { gql } from "@apollo/client";
+import { request } from "graphql-request";
 import { getAccessToken } from "../auth";
 export const GRAPHQL_URL = "http://localhost:9000/api";
 
