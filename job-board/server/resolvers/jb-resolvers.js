@@ -6,6 +6,16 @@ const isLoggedIn = (userId) => {
   }
 };
 
+const checkId = async (id) => {
+  const oldData = await Job.findById(id);
+
+  if (!oldData) {
+    throw new Error(`Invalid Job Id: ${id}`);
+  }
+
+  return oldData;
+};
+
 const getUserCompanyId = async (userId) =>
   (await User.findById(userId)).companyId;
 
@@ -27,9 +37,12 @@ const resolvers = {
       // Action if logged in
       return Job.create({ ...input, companyId });
     },
-    deleteJob(_root, { id }, { id: userId }) {
+    async deleteJob(_root, { id }, { id: userId }) {
       // Check logging
       isLoggedIn(userId);
+
+      // Action
+      await checkId(id);
 
       // Action if logged in
       return Job.delete(id);
@@ -40,11 +53,7 @@ const resolvers = {
 
       // Action if logged in
       /// Get old data
-      const oldData = await Job.findById(input.id);
-
-      if (!oldData) {
-        throw new Error(`Invalid Job Id: ${input.id}`);
-      }
+      const oldData = await checkId(input.id);
 
       /// Override and update
       return Job.update({
