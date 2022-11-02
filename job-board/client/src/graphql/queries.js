@@ -50,7 +50,7 @@ export async function getJobs() {
 
   const {
     data: { jobs },
-  } = await client.query({ query, fetchPolicy: "network-only" });
+  } = await client.query({ query, fetchPolicy: "no-cache" });
 
   return jobs;
 }

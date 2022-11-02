@@ -21,9 +21,15 @@ const getUserCompanyId = async (userId) =>
 
 const resolvers = {
   Query: {
-    job: (_root, { id }) => Job.findById(id),
-    jobs: () => Job.findAll(),
-    company: (_root, { id }) => Company.findById(id),
+    job(_root, { id }) {
+      return Job.findById(id);
+    },
+    jobs() {
+      return Job.findAll();
+    },
+    company(_root, { id }) {
+      return Company.findById(id);
+    },
   },
 
   Mutation: {
