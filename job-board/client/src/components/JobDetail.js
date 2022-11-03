@@ -1,32 +1,9 @@
-import { useEffect, useState } from "react";
-import { useParams } from "react-router";
 import { Link } from "react-router-dom";
-import { getJob } from "../graphql/queries";
+import { useJob } from "../graphql/gql-hooks";
 import ErrorUI from "./ErrorUI";
 
 function JobDetail() {
-  const [job, setJob] = useState(null);
-  const { jobId } = useParams();
-  const [gqlErrors, setGqlErrors] = useState(false);
-  const [isLoading, setIsLoading] = useState(true);
-
-  useEffect(() => {
-    async function fetchJob() {
-      try {
-        const job = await getJob(jobId);
-
-        setJob(job);
-
-        setIsLoading(false);
-        setGqlErrors(false);
-      } catch (error) {
-        setGqlErrors(true);
-        setIsLoading(false);
-      }
-    }
-
-    fetchJob();
-  }, [jobId]);
+  const { job, isLoading, gqlErrors } = useJob();
 
   if (!job && isLoading) {
     return <p>Loading...</p>;
