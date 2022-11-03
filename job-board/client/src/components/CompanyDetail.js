@@ -1,30 +1,9 @@
-import { useEffect, useState } from "react";
-import { useParams } from "react-router";
-import { getCompany } from "../graphql/queries";
+import { useCompany } from "../graphql/gql-hooks";
 import ErrorUI from "./ErrorUI";
 import JobList from "./JobList";
 
 function CompanyDetail() {
-  const { companyId } = useParams();
-  const [company, setGetCompany] = useState(null);
-  const [gqlErrors, setGqlErrors] = useState(false);
-  const [isLoading, setIsLoading] = useState(true);
-
-  useEffect(() => {
-    async function gqlFetchCompany() {
-      try {
-        const company = await getCompany(companyId);
-        setGetCompany(company);
-
-        setIsLoading(false);
-        setGqlErrors(false);
-      } catch (error) {
-        setGqlErrors(true);
-        setIsLoading(false);
-      }
-    }
-    gqlFetchCompany();
-  }, [companyId]);
+  const { company, isLoading, gqlErrors } = useCompany();
 
   if (!company && isLoading) {
     return <p>Loading...</p>;
