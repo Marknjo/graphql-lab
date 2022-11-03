@@ -4,6 +4,7 @@ specifiers:
   '@apollo/server': ^4.1.0
   better-sqlite3: ^7.6.2
   cors: ^2.8.5
+  dataloader: ^2.1.0
   express: ^4.18.2
   express-jwt: ^7.7.7
   graphql: ^16.6.0
@@ -16,6 +17,7 @@ dependencies:
   '@apollo/server': 4.1.0_graphql@16.6.0
   better-sqlite3: 7.6.2
   cors: 2.8.5
+  dataloader: 2.1.0
   express: 4.18.2
   express-jwt: 7.7.7
   graphql: 16.6.0
@@ -556,6 +558,10 @@ packages:
     dependencies:
       object-assign: 4.1.1
       vary: 1.1.2
+    dev: false
+
+  /dataloader/2.1.0:
+    resolution: {integrity: sha512-qTcEYLen3r7ojZNgVUaRggOI+KM7jrKxXeSHhogh/TWxYMeONEMqY+hmkobiYQozsGIyg9OYVzO4ZIfoB4I0pQ==}
     dev: false
 
   /debug/2.6.9:

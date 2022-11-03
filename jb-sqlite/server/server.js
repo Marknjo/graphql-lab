@@ -7,7 +7,7 @@ import { expressjwt } from "express-jwt";
 import { readFile } from "fs/promises";
 import { createServer } from "http";
 import jwt from "jsonwebtoken";
-import { db } from "./db.js";
+import { createCompanyLoader, db } from "./db.js";
 import { resolvers } from "./resolvers.js";
 
 const PORT = 9000;
@@ -48,15 +48,17 @@ async function startGQLServer() {
   await server.start();
 
   const context = async ({ req }) => {
+    const companyLoader = createCompanyLoader();
+
     if (req.auth) {
       const user = await db
         .select()
         .from("users")
         .where("id", req.auth.sub)
         .first();
-      return { user };
+      return { user, companyLoader };
     }
-    return {};
+    return { companyLoader };
   };
 
   app.use("/api", expressMiddleware(server, { context }));
