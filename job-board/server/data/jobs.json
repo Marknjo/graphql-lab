@@ -16,5 +16,29 @@
     "companyId": "wvdB54Gqbdp_NZTXK9Tue",
     "title": "Full-Stack Developer",
     "description": "We are looking for a Full-Stack Developer familiar with Node.js, Express, and React."
+  },
+  {
+    "id": "XLLnXZ8TC4vWzolOjHlXe",
+    "title": "Test job",
+    "description": "Here is the new job",
+    "companyId": "pVbRRBQtMVw6lUAkj1k43"
+  },
+  {
+    "id": "krdoiaPHmYg3vSIOl7Fzn",
+    "title": "Test job 2",
+    "description": "A new job to publish",
+    "companyId": "pVbRRBQtMVw6lUAkj1k43"
+  },
+  {
+    "id": "AiqKdhRRQZ66Pwqiia76G",
+    "title": "Test job 3",
+    "description": "A new job to publish",
+    "companyId": "pVbRRBQtMVw6lUAkj1k43"
+  },
+  {
+    "id": "8B54NP6l3VTJy1jIygMh-",
+    "title": "Test job 4",
+    "description": "A new job to publish",
+    "companyId": "pVbRRBQtMVw6lUAkj1k43"
   }
 ]

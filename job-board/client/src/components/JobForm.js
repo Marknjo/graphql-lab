@@ -1,25 +1,31 @@
 import { useState } from "react";
-import { createJob } from "../graphql/queries";
 import { useNavigate } from "react-router-dom";
+import { useCreateJob } from "../graphql/gql-hooks";
+import ErrorUI from "./ErrorUI";
 
 function JobForm() {
   const navigate = useNavigate();
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
+  const { createJob, isLoading, gqlErrors } = useCreateJob();
 
   const handleSubmit = async (event) => {
     event.preventDefault();
 
-    const job = await createJob({ title, description });
+    const { job } = await createJob({ title, description });
 
     navigate(`/jobs/${job.id}`);
   };
+
+  if (gqlErrors) {
+    return <ErrorUI />;
+  }
 
   return (
     <div>
       <h1 className='title'>New Job</h1>
       <div className='box'>
-        <form>
+        <form onSubmit={handleSubmit}>
           <div className='field'>
             <label className='label'>Title</label>
             <div className='control'>
@@ -44,7 +50,10 @@ function JobForm() {
           </div>
           <div className='field'>
             <div className='control'>
-              <button className='button is-link' onClick={handleSubmit}>
+              <button
+                type='submit'
+                className='button is-link'
+                disabled={isLoading}>
                 Submit
               </button>
             </div>
