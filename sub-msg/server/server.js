@@ -2,6 +2,9 @@ import { createServer } from "http";
 import { ApolloServer } from "@apollo/server";
 import { ApolloServerPluginDrainHttpServer } from "@apollo/server/plugin/drainHttpServer";
 import { expressMiddleware } from "@apollo/server/express4";
+import { makeExecutableSchema } from "@graphql-tools/schema";
+import { useServer } from "graphql-ws/lib/use/ws";
+import { WebSocketServer } from "ws";
 import cors from "cors";
 import express from "express";
 import { expressjwt } from "express-jwt";
@@ -45,14 +48,38 @@ function getContext({ req }) {
 }
 
 async function startGQLServer() {
+  // Schemas
   const typeDefs = await readFile("./schema.graphql", "utf8");
+  const schema = makeExecutableSchema({ typeDefs, resolvers });
 
+  /// Http Server
   const httpServer = createServer(app);
 
+  /// Web sockets server
+  const wsServer = new WebSocketServer({
+    server: httpServer,
+    path: "/api",
+  });
+  const serverCleanup = useServer({ schema }, wsServer);
+
+  /// GraphQL Server
   const gqlServer = new ApolloServer({
-    resolvers,
-    typeDefs,
-    plugins: [ApolloServerPluginDrainHttpServer({ httpServer })],
+    schema,
+    plugins: [
+      // Proper shutdown for the http server
+      ApolloServerPluginDrainHttpServer({ httpServer }),
+
+      // Proper shutdown for th WebSocket server
+      {
+        async serverWillStart() {
+          return {
+            async drainServer() {
+              await serverCleanup();
+            },
+          };
+        },
+      },
+    ],
   });
 
   await gqlServer.start();
