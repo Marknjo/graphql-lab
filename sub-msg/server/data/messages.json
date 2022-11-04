@@ -13,5 +13,15 @@
     "id": "5zO7pWg4r_aALIPwkqGfw",
     "from": "bob",
     "text": "hey bob"
+  },
+  {
+    "id": "MnARmKXNrpxkSk5BPDyib",
+    "from": "alice",
+    "text": "Bob should we meet today"
+  },
+  {
+    "id": "lxGWcL8kYY58bRvNybRTL",
+    "from": "bob",
+    "text": "Where?"
   }
 ]
