@@ -74,7 +74,7 @@ async function startGQLServer() {
         async serverWillStart() {
           return {
             async drainServer() {
-              await serverCleanup();
+              await serverCleanup.dispose();
             },
           };
         },
