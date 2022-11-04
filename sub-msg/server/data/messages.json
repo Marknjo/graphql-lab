@@ -5,23 +5,13 @@
     "text": "Welcome!"
   },
   {
-    "id": "VWDygh1p_iPrFW036vfxp",
+    "id": "sGrwbPd_vjRruEdFHuHvV",
     "from": "alice",
-    "text": "Hi, Am Alice"
+    "text": "hey alice"
   },
   {
-    "id": "PWBX5xV5hxQSGAloRDxkY",
-    "from": "alice",
-    "text": "Is there someone out there"
-  },
-  {
-    "id": "PqkktzUNfPOMA0uIGU3sE",
-    "from": "alice",
-    "text": "Am excited here"
-  },
-  {
-    "id": "3OEijfY1G2_JbC_sGeWiF",
+    "id": "5zO7pWg4r_aALIPwkqGfw",
     "from": "bob",
-    "text": "am bob"
+    "text": "hey bob"
   }
 ]
