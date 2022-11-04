@@ -5,23 +5,23 @@
     "text": "Welcome!"
   },
   {
-    "id": "sGrwbPd_vjRruEdFHuHvV",
+    "id": "PT1EjYUyx26jf9Q_9DuPM",
     "from": "alice",
-    "text": "hey alice"
+    "text": "Hi Bob"
   },
   {
-    "id": "5zO7pWg4r_aALIPwkqGfw",
+    "id": "IIedqWwkJUM9cCiL6SM5b",
     "from": "bob",
-    "text": "hey bob"
+    "text": "Hi Alice"
   },
   {
-    "id": "MnARmKXNrpxkSk5BPDyib",
+    "id": "lFTUFFHQI2z6Sg9HcFYbM",
     "from": "alice",
-    "text": "Bob should we meet today"
+    "text": "Nice to hear from you Bob"
   },
   {
-    "id": "lxGWcL8kYY58bRvNybRTL",
+    "id": "Asg5r30n6tmiNf-2NLP41",
     "from": "bob",
-    "text": "Where?"
+    "text": "Me too"
   }
 ]
