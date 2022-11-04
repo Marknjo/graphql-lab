@@ -4,15 +4,17 @@ specifiers:
   '@apollo/client': ^3.7.1
   bulma: ^0.9.4
   graphql: ^16.6.0
+  graphql-ws: ^5.11.2
   jwt-decode: ^3.1.2
   react: ^18.2.0
   react-dom: ^18.2.0
   react-scripts: ^5.0.1
 
 dependencies:
-  '@apollo/client': 3.7.1_gdcq4dv6opitr3wbfwyjmanyra
+  '@apollo/client': 3.7.1_xe4twbeoqswbn2uas4ov5melbq
   bulma: 0.9.4
   graphql: 16.6.0
+  graphql-ws: 5.11.2_graphql@16.6.0
   jwt-decode: 3.1.2
   react: 18.2.0
   react-dom: 18.2.0_react@18.2.0
@@ -42,7 +44,7 @@ packages:
       leven: 3.1.0
     dev: true
 
-  /@apollo/client/3.7.1_gdcq4dv6opitr3wbfwyjmanyra:
+  /@apollo/client/3.7.1_xe4twbeoqswbn2uas4ov5melbq:
     resolution: {integrity: sha512-xu5M/l7p9gT9Fx7nF3AQivp0XukjB7TM7tOd5wifIpI8RskYveL4I+rpTijzWrnqCPZabkbzJKH7WEAKdctt9w==}
     peerDependencies:
       graphql: ^14.0.0 || ^15.0.0 || ^16.0.0
@@ -66,6 +68,7 @@ packages:
       '@wry/trie': 0.3.2
       graphql: 16.6.0
       graphql-tag: 2.12.6_graphql@16.6.0
+      graphql-ws: 5.11.2_graphql@16.6.0
       hoist-non-react-statics: 3.3.2
       optimism: 0.16.1
       prop-types: 15.8.1
@@ -5109,6 +5112,15 @@ packages:
     dependencies:
       graphql: 16.6.0
       tslib: 2.4.1
+    dev: false
+
+  /graphql-ws/5.11.2_graphql@16.6.0:
+    resolution: {integrity: sha512-4EiZ3/UXYcjm+xFGP544/yW1+DVI8ZpKASFbzrV5EDTFWJp0ZvLl4Dy2fSZAzz9imKp5pZMIcjB0x/H69Pv/6w==}
+    engines: {node: '>=10'}
+    peerDependencies:
+      graphql: '>=0.11 <=16'
+    dependencies:
+      graphql: 16.6.0
     dev: false
 
   /graphql/16.6.0:
