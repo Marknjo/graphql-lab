@@ -38,13 +38,25 @@ app.post("/login", async (req, res) => {
   }
 });
 
-function getContext({ req }) {
+function getHttpContext({ req }) {
   console.log(``);
 
   if (req.auth) {
     return { userId: req.auth.sub };
   }
   return {};
+}
+
+function getWsContext({ connectionParams }) {
+  const token = connectionParams?.accessToken;
+
+  if (!token) {
+    return {};
+  }
+
+  const { sub: userId } = jwt.verify(token, JWT_SECRET);
+
+  return { userId };
 }
 
 async function startGQLServer() {
@@ -60,7 +72,7 @@ async function startGQLServer() {
     server: httpServer,
     path: "/api",
   });
-  const serverCleanup = useServer({ schema }, wsServer);
+  const serverCleanup = useServer({ schema, context: getWsContext }, wsServer);
 
   /// GraphQL Server
   const gqlServer = new ApolloServer({
@@ -87,7 +99,7 @@ async function startGQLServer() {
   app.use(
     "/api",
     expressMiddleware(gqlServer, {
-      context: getContext,
+      context: getHttpContext,
     })
   );
 
